@@ -57,4 +57,17 @@ class AppController extends Controller
         exit;
     }
 
+    //     /**
+    //  * Retorna o Id do usuário logado no sistema.
+    //  * @return type int
+    //  */
+    // public function getIdCollaboratorLogged() {
+    //     return $this->Auth->user()['user_id'];
+    // }
+
+    public function findId(){
+        return $this->getRequest()->getSession()->read('User.id')['id'];
+    }
+
+
 }

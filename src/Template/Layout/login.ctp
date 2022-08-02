@@ -31,25 +31,23 @@ $cakeDescription = 'Revista Fabiana e Jussara';
 
     <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
     <link href="bootstrap.min.css" rel="stylesheet"> -->
-    <?php echo $this->Html->css(['bootstrap.min.css', 'signin', "jquery-ui.css"]) ?>
-
-    <?= $this->Html->css('base.css') ?>
-    <!-- <//?= $this->Html->css('signin.css') ?> -->
+    <?php echo $this->Html->css(['bootstrap.min.css', 'signin', 'base', 'style']) ?>
+    <?= $this->Html->script(["jquery-3.6.0.js", "jquery-ui.js", "jquery.mask.min"]) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+
     <!-- Custom styles for this template -->
 </head>
 <body class="text-center">
     <main class="form-signin w-100 m-auto">
    <?php echo $this->Html->image("natura.svg",['class'=>'mb-4','width'=>'72', 'height'=>'57']);?>
-            <h1 class="h3 mb-3 fw-normal">Faça seu pedido aqui</h1>           
+        <h1 class="h3 mb-3 fw-normal">Faça seu pedido aqui</h1>
         <?= $this->Flash->render() ?>
-        <div class="container clearfix">
-            <?= $this->fetch('content') ?>
-        </div>
+            <div class="container clearfix">
+                <?= $this->fetch('content') ?>
+            </div>         
     </main>
 </body>
-
 </html>

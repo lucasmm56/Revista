@@ -28,6 +28,7 @@ class Product extends Entity
      */
     protected $_accessible = [
         'user_id' => true,
+        'name'=>true,
         'product_code' => true,
         'amount' => true,
         'created' => true,

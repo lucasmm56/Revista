@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
  * Products Controller
@@ -19,8 +20,9 @@ class ProductsController extends AppController
      */
     public function index()
     {
+        $id = $this->findId();
         $this->paginate = [
-            'contain' => ['Users'],
+            'contain' => ['Users'],'conditions'=>['products.user_id'=>$id],
         ];
         $products = $this->paginate($this->Products);
 
@@ -48,20 +50,35 @@ class ProductsController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id = null)
     {
-        $product = $this->Products->newEntity();
-        if ($this->request->is('post')) {
-            $product = $this->Products->patchEntity($product, $this->request->getData());
-            if ($this->Products->save($product)) {
-                $this->Flash->success(__('The product has been saved.'));
+        $user_id = $this->findId();
+        $this->paginate = [
+            'contain' => ['Users'],'conditions'=>['products.user_id'=>$user_id],'limit'=>'3'
+        ];
+        $products = $this->paginate($this->Products);
 
-                return $this->redirect(['action' => 'index']);
+        if(!empty($id)){
+            $product = $this->Products->get($id, [
+                'contain' => [],
+            ]);
+        }else{
+            $product = $this->Products->newEntity();
+        }
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $product = $this->Products->patchEntity($product, $this->request->getData());
+            $product->user_id = $user_id;
+            
+            if ($this->Products->save($product)) {
+                $this->Flash->success(__('Produto salvo com sucesso.'));
+
+                return $this->redirect(['action' => 'add']);
             }
-            $this->Flash->error(__('The product could not be saved. Please, try again.'));
+            $this->Flash->error(__('O produto não pode ser salvo.Por favor tente novamente.'));
         }
         $users = $this->Products->Users->find('list', ['limit' => 200]);
-        $this->set(compact('product', 'users'));
+        $this->set(compact('product', 'users', 'id','products'));
     }
 
     /**
@@ -101,11 +118,11 @@ class ProductsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $product = $this->Products->get($id);
         if ($this->Products->delete($product)) {
-            $this->Flash->success(__('The product has been deleted.'));
+            $this->Flash->success(__('Produto deletado com sucesso.'));
         } else {
-            $this->Flash->error(__('The product could not be deleted. Please, try again.'));
+            $this->Flash->error(__('O produto não pode ser deletado. Por favor, tente novamente.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'add']);
     }
 }
