@@ -14,33 +14,31 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>Blog Template · Bootstrap v5.2</title>
+    <title>Pedidos Natura</title>
 
-    <?php echo $this->Html->css("https://getbootstrap.com/docs/5.2/examples/blog/") ?>
 
     <?php echo $this->Html->css("bootstrap.min.css") ?>
-
-    <!-- Custom styles for this template -->
-    <?php echo $this->Html->css("https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap") ?>
     <!-- Custom styles for this template -->
     <?php echo $this->Html->css("blog.css") ?>
 </head>
 
 <body>
     <main class="container">
-        <div class="p-4 p-md-2 mb-4 rounded text-bg-dark">
+        <div class="p-4 p-md-1 mb-4 rounded text-bg-dark">
             <iframe class="responsive-iframe" src='<?php echo $this->Url->build('../files/natura-c07-22.pdf') ?>' class="iframe-full" style="width:100%; height:400px;"></iframe>
         </div>
         <div class="row mb-2">
             <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"style='left:15px'>
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-primary">Produtos</strong>
+                        <font size='1'>Copie o conteúdo da revista e cole aqui</font>
                         <hr>
                         <?= $this->Form->create($product) ?>
                         <div class="container">
                             <div class="row">
                                 <div class="col">
+                                   
                                     <?php echo $this->Form->text('name', ['label' => '', 'class' => 'form-control', 'placeholder' => 'Nome do produto']); ?>
                                 </div>
                                 <div class="col">
@@ -58,7 +56,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style='left:20px'>
                     <div class="col p-2 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-success">Carrinho</strong>
                         <table class="table table-bordered">
