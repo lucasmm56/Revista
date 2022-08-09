@@ -25,12 +25,12 @@
 <body>
     <main class="container">
         <div class="p-4 p-md-1 mb-4 rounded text-bg-dark">
-            <iframe class="responsive-iframe" src='<?php echo $this->Url->build('../files/natura-c07-22.pdf') ?>' class="iframe-full" style="width:100%; height:400px;"></iframe>
+            <iframe class="responsive-iframe" src='<?php echo $this->Url->build('../files/natura-c07-22.pdf') ?>' class="iframe-full" style="width:100%; height:580px;"></iframe>
         </div>
         <div class="row mb-2">
             <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"style='left:15px'>
-                    <div class="col p-4 d-flex flex-column position-static">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style='left:15px'>
+                    <div class="col p-2 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-primary">Produtos</strong>
                         <font size='1'>Copie o conteúdo da revista e cole aqui</font>
                         <hr>
@@ -38,7 +38,6 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                   
                                     <?php echo $this->Form->text('name', ['label' => '', 'class' => 'form-control', 'placeholder' => 'Nome do produto']); ?>
                                 </div>
                                 <div class="col">
@@ -48,7 +47,12 @@
                                     <?php echo $this->Form->text('amount', ['label' => '', 'class' => 'form-control',  'placeholder' => 'Quantidade']); ?>
                                 </div>
                             </div>
-                            <hr>
+                            <div class="form-group">
+                                <font size='1'>Tire um print do seu produto e adicione aqui</font>
+                                <?php
+                                echo $this->Form->control('file', ['id' => 'exampleFormControlFile1', 'label' => false,'type' => 'file', 'class' => 'form-control-file', 'escape' => false, 'required', 'accept' => "image/*"]);
+                                ?>
+                            </div>
                             <?= $this->Form->button(__('Pedir'), ['class' => 'btn btn-primary']) ?>
                         </div>
                         <?= $this->Form->end() ?>
